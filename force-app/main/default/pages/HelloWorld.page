@@ -7,8 +7,5 @@
         <apex:pageBlockSection title="A Section Title">
             I'm three components deep!
         </apex:pageBlockSection>
-        <apex:pageBlockSection title="A New Section">
-            This is another section
-        </apex:pageBlockSection>
     </apex:pageBlock>
 </apex:page>
