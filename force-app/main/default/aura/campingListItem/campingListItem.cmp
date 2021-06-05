@@ -4,7 +4,7 @@
     Name: {!v.item.Name} 
   </p>
   <p>Price:
-    <lightning:formattedNumber value="{!v.item.Price__c}" style="currency"/>
+    <lightning:formattedNumber value="{!v.item.Price__c}"/>
   </p>
   <p>Quantity:
     <lightning:formattedNumber value="{!v.item.Quantity__c}"/>
