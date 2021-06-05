@@ -239,3 +239,15 @@ for(Integer i=0;i<colors.size();i++) {
     // Write value to the debug log
     System.debug(colors[i]);
 }
+// testing array of account sObject instead of listing
+
+Account acc = new Account(name='A');
+Account acc1 = new Account(name='B', Phone='123456');
+Account[] accs = new Account[]{acc, acc1};
+// or
+List<Account> accs = new List<Account>{acc, acc1};
+System.debug(accs);
+
+// run THEmailManager class
+THEmailManager em = new THEMailManager();
+em.sendMail('hossainforcontact@gmail.com', 'trailhead message', '123 body');
