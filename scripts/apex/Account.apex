@@ -251,3 +251,5 @@ System.debug(accs);
 // run THEmailManager class
 THEmailManager em = new THEMailManager();
 em.sendMail('hossainforcontact@gmail.com', 'trailhead message', '123 body');
+// run THEmailManager class with static sendMail() method
+THEmailManager.sendMail('hossainforcontact@gmail.com', 'trailhead message', '456 body');

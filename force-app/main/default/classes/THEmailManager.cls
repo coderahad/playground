@@ -1,6 +1,6 @@
 public class THEmailManager {
     // public method
-    public void sendMail(String address, String subject, String body) {
+    public static void sendMail(String address, String subject, String body) {
         // create an email message object
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         String[] toAddresses = new String[] {address};
