@@ -317,3 +317,7 @@ upsert jane2 Contact.fields.Email;
 // Verify that the contact has been updated
 System.assertEquals('Prefers to be contacted by email.',
                    [SELECT Description FROM Contact WHERE Id=:jane.Id].Description);
+
+// delete(bulk) 
+Contact[] contactsDel = [SELECT Id FROM Contact WHERE LastName='Smith']; 
+delete contactsDel;
