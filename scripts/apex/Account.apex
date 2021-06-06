@@ -256,3 +256,45 @@ THEmailManager.sendMail('hossainforcontact@gmail.com', 'trailhead message', '456
 
 // TH challenge
 System.debug(StringArrayTest.generateStringArray(10));
+
+// TH Manipulate records with DML example
+// Create a list of contacts
+List<Contact> conList = new List<Contact> {
+    new Contact(FirstName='Joe',LastName='Smith',Department='Finance'),
+        new Contact(FirstName='Kathy',LastName='Smith',Department='Technology'),
+        new Contact(FirstName='Caroline',LastName='Roth',Department='Finance'),
+        new Contact(FirstName='Kim',LastName='Shain',Department='Education')};
+            
+// Bulk insert all contacts with one DML call
+insert conList;
+// List to hold the new contacts to update
+List<Contact> listToUpdate = new List<Contact>();
+// Iterate through the list and add a title only
+//   if the department is Finance
+for(Contact con : conList) {
+    if (con.Department == 'Finance') {
+        con.Title = 'Financial analyst';
+        // Add updated contact sObject to the list.
+        listToUpdate.add(con);
+    }
+}
+// Bulk update all contacts with one DML call
+update listToUpdate;
+
+
+// Upsert example
+
+// Insert the Josh contact
+Contact josh = new Contact(FirstName='Josh',LastName='Kaplan',Department='Finance');       
+insert josh;
+// Josh's record has been inserted
+//   so the variable josh has now an ID
+//   which will be used to match the records by upsert
+josh.Description = 'Josh\'s record has been updated by the upsert operation.';
+// Create the Kathy contact, but don't persist it in the database
+Contact kathy = new Contact(FirstName='Kathy',LastName='Brown',Department='Technology');
+// List to hold the new contacts to upsert
+List<Contact> contacts = new List<Contact> { josh, kathy };
+// Call upsert
+upsert contacts;
+// Result: Josh is updated and Kathy is created.
