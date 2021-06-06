@@ -333,3 +333,35 @@ try {
     System.debug('A DML exception has occurred: ' +
                 e.getMessage());
 }
+
+//Database Methods
+// This is how you call the insert method with the allOrNone set to false.
+Database.insert(recordList, false);
+// insert and update operations each return an array of Database.SaveResult objects.
+Database.SaveResult[] results = Database.insert(recordList, false);
+//Upsert returns Database.UpsertResult objects, and delete returns Database.DeleteResult objects.
+
+//Inserting Records with Partial Success
+// Create a list of contacts
+List<Contact> conList = new List<Contact> {
+        new Contact(FirstName='Joe',LastName='Smith',Department='Finance'),
+        new Contact(FirstName='Kathy',LastName='Smith',Department='Technology'),
+        new Contact(FirstName='Caroline',LastName='Portsenko',Department='Finance'),
+        new Contact()};
+            
+// Bulk insert all contacts with one DML call
+Database.SaveResult[] srList = Database.insert(conList, false);
+// Iterate through each returned result
+for (Database.SaveResult sr : srList) {
+    if (sr.isSuccess()) {
+        // Operation was successful, so get the ID of the record that was processed
+        System.debug('Successfully inserted contact. Contact ID: ' + sr.getId());
+    } else {
+        // Operation failed, so get all errors
+        for(Database.Error err : sr.getErrors()) {
+            System.debug('The following error has occurred.');
+            System.debug(err.getStatusCode() + ': ' + err.getMessage());
+            System.debug('Contact fields that affected this error: ' + err.getFields());
+	 }
+    }
+}
