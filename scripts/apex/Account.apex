@@ -444,3 +444,6 @@ System.assertEquals(1, i); // Since a single batch can hold up to 200 records an
                        // loop should have executed only once
 System.debug(j);
 System.debug(i);
+
+
+ContactSearch.SearchForContacts('Rogers', '27215');
