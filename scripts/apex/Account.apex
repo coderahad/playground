@@ -400,3 +400,25 @@ update queriedContact.Account;
 // deleting related records
 Account[] queriedAccounts = [SELECT Id FROM Account WHERE Name='SFDC Account'];
 delete queriedAccounts;
+
+// SOQL queries
+//get the child records from the SOQL result by using the Contacts relationship name on the sObject.
+Account[] acctsWithContacts = [SELECT Name, (SELECT FirstName,LastName FROM Contacts)
+                               FROM Account 
+                               WHERE Name = 'SFDC Computing'];
+// Get child records
+Contact[] cts = acctsWithContacts[0].Contacts;
+System.debug('Name of first associated contact: ' 
+             + cts[0].FirstName + ', ' + cts[0].LastName);
+//It can Also be the single
+Contact cts = acctsWithContacts[0].Contacts;
+System.debug('Name of first associated contact: ' 
+             + cts.FirstName + ', ' + cts.LastName);
+
+// Contacts associated account by traversing the relationship between accounts and contacts.
+//get parent records
+Contact[] cts = [SELECT Account.Name FROM Contact 
+                 WHERE FirstName = 'Carol' AND LastName='Ruiz'];
+Contact carol = cts[0];
+String acctName = carol.Account.Name;
+System.debug('Carol\'s account name is ' + acctName);
