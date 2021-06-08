@@ -461,3 +461,5 @@ System.debug('Found the following contacts.');
 for (Contact c : searchContacts) {
     System.debug(c.LastName + ', ' + c.FirstName);
 }
+
+ContactAndLeadSearch.searchContactsAndLeads('Smith');
