@@ -463,3 +463,7 @@ for (Contact c : searchContacts) {
 }
 
 ContactAndLeadSearch.searchContactsAndLeads('Smith');
+
+// Trigger Test: Email sent on insert contact
+Contact c = new Contact(LastName='Test Contact 1');
+insert c;
