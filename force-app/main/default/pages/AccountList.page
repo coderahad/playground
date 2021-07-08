@@ -1,0 +1,13 @@
+<apex:page standardController="Account" recordSetVar="accounts"> 
+  <apex:pageBlock title="Account List">
+    <apex:repeat var="a" value="{!accounts}">
+      <li>
+        <!-- Hint: Record detail pages can be reached by placing a record ID at the root of the URL 
+          (e.g. <record id>) '/' is the root-->
+          <apex:outputLink value="/{!a.id}" >
+              {!a.name}
+          </apex:outputLink>
+      </li>
+    </apex:repeat>
+  </apex:pageBlock>
+</apex:page>
