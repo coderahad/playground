@@ -1,5 +1,5 @@
 <aura:component>
-  <aura:attribute name="item" type="Camping_Item__c" required="true"/>
+  <aura:attribute name="item" type="Camping_Item__c" required="true" default="{'sobjectType':'Camping_Item__c','Packed__c':false}"/>
   <p>
     Name: {!v.item.Name} 
   </p>
@@ -12,4 +12,11 @@
   <p>Packed
     <lightning:input type="toggle" label="Packed?" name="packingStatus" checked="{!v.item.Packed__c}"/>
   </p>
+  <P>
+    <lightning:button label="Packed!" onclick="{!c.packItem}"></lightning:button>
+  </P>
+  <!-- <p>Packed:
+    <ui:outputCheckbox aura:id="checkbox" value="{!v.item.Packed__c}"/>
+  </p>
+  <ui:button label="Packed!" press="{!c.packItem}"/>   -->
 </aura:component>	
