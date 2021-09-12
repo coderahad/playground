@@ -1,5 +1,5 @@
 <aura:component>
-  <aura:attribute name="item" type="Camping_Item__c" required="true" default="{'sobjectType':'Camping_Item__c','Packed__c':false}"/>
+  <aura:attribute name="item" type="Camping_Item__c" required="true" />
   <p>
     Name: {!v.item.Name} 
   </p>
