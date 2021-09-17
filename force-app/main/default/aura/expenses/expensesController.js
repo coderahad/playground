@@ -3,7 +3,7 @@
         let validExpense = component.find('expenseform').reduce(function(validSoFar, inputCmp) {
             // DIsplay error message for invalid fields
             inputCmp.showHelpMessageIfInvalid();
-            console.log(inputCmp.get('v.validity', 'v.name'));
+            // console.log(inputCmp.get('v.validity', 'v.name'));
             return validSoFar && inputCmp.get('v.validity').valid;
         }, true);
         // if we pass error checking, do some real work
