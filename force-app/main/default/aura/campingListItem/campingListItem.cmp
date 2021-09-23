@@ -10,11 +10,12 @@
     <lightning:formattedNumber value="{!v.item.Quantity__c}"/>
   </p>
   <p>Packed
-    <lightning:input type="toggle" label="Packed?" name="packingStatus" checked="{!v.item.Packed__c}"/>
+    <!-- <ui:outputCheckbox value="{!v.item.Packed__c}"/> -->
+    <lightning:input type="checkbox" label="Packed" name="packingStatus" value="{!v.item.Packed__c}"/>
   </p>
-  <P>
+  <!-- <P>
     <lightning:button label="Packed!" onclick="{!c.packItem}"></lightning:button>
-  </P>
+  </P> -->
   <!-- <p>Packed:
     <ui:outputCheckbox aura:id="checkbox" value="{!v.item.Packed__c}"/>
   </p>
