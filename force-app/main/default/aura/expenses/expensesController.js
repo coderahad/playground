@@ -25,7 +25,7 @@
                 component.set("v.expenses", response.getReturnValue());
             }
             else {
-                console.log('Failed with state: ' + state);
+                console.log('Failed with state: ' + stat);
             }
         });
         // send action off to be executed
