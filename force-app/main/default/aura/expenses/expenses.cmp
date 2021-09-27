@@ -2,6 +2,7 @@
   <aura:attribute name="expenses" type="Expense__c[]"/>
   <aura:attribute name="newExpense" type="Expense__c" default="{'sobjectType': 'Expense__c','Name': '', 'Amount__c': 0, 'Client__c': '', 'Date__c': '', 'Reimbursed__c': false}"/>
   <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+  <aura:handler name="updateExpense" event="c:expensesItemUpdate" action="{!c.handleUpdateExpense}"/>
   <!-- Page Header -->
   <lightning:layout class="slds-page-header slds-page-header_object-home">
     <lightning:layoutItem>

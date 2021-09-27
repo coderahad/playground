@@ -14,6 +14,10 @@
             helper.createExpense(component, newExpense);
         }
     },
+    handleUpdateExpense: function(component, event, helper) {
+        let updateExp = event.getParam("expense");
+        helper.updateExpense(component, updateExp);
+    },
     // LOad expenses from Salesforce
     doInit: function(component, event, helper) {
         // Create the action
