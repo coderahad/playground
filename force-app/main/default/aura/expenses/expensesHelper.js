@@ -1,32 +1,25 @@
 ({
-    createExpense : function(component, expense) {
+    saveExpense: function(component, expense, callback) {
         let action = component.get("c.saveExpense");
         action.setParams({
             "expense": expense
         });
-        action.setCallback(this, function(response){
-            let state = response.getState();
-            if(state === 'SUCCESS') {
-                let expenses = component.get("v.expenses");
-                expenses.push(response.getReturnValue());
-                // Here the expense attribute updated only in the component. It is not called all records again from the server. 
-                //the attribute get the records initially when the component loads with the help of doInit function.
-                component.set("v.expenses", expenses);
-            }
-        });
+        if(callback) {
+            action.setCallback(this, callback);
+        }
         $A.enqueueAction(action);
     },
-    updateExpense: function(component, expense) {
-        let action = component.get("c.saveExpense");
-        action.setParams({
-            "expense": expense
-        });
-        action.setCallback(this, function(response){
+    createExpense : function(component, expense) {
+        this.saveExpense(component, expense, function(response){
             let state = response.getState();
-            if(state === "SUCCESS") {
-                // do nothing
+            if(state === 'SUCCESS') {
+               let expenses = component.get("v.expenses");
+               expenses.push(response.getReturnValue());
+               component.set("v.expenses", expenses); 
             }
         });
-        $A.enqueueAction(action);
+    },
+    updateExpense: function(component, expense) {
+        this.saveExpense(component,expense);        
     }
 })
