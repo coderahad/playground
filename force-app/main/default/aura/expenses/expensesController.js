@@ -1,7 +1,9 @@
 ({
     handleUpdateExpense: function(component, event, helper) {
-        let updateExp = event.getParam("expense");
-        helper.updateExpense(component, updateExp);
+        // I guess this "expense" is the parameter-value sent by clickReimbursed through the fired updateEvent
+        // Here it sets the parameter-value for the updateExpense event
+        let updatedExp = event.getParam("expense");
+        helper.updateExpense(component, updatedExp);
     },
     handleCreateExpense: function(component, event, helper) {
         let newExpense = event.getParam("expense");

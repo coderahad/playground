@@ -1,25 +1,4 @@
 ({
-    clickCreateItem : function(component, event, helper) {
-        let validExpense = component.find('campinglistform').reduce(function(validSoFar, inputCmp) {
-            // DIsplay error message for invalid fields
-            inputCmp.showHelpMessageIfInvalid();
-            // console.log(inputCmp.get('v.validity', 'v.name'));
-            return validSoFar && inputCmp.get('v.validity').valid;
-        }, true);
-        // if we pass error checking, do some real work
-        if(validExpense) {
-            //create new expense
-            let newItem = component.get("v.newItem");
-            console.log("Create Camp List: " + JSON.stringify(newItem));
-            helper.createItem(component, newItem);
-            // let theCampList = component.get("v.items");
-            // // copy the list to a new object
-            // let newCampList = JSON.parse(JSON.stringify(newItem));
-            // theCampList.push(newCampList);
-            // component.set("v.items", theCampList);
-            // component.set("v.newItem", {'sobjectType' : 'Camping_Item__c','Name': '', 'Quantity__c': 0, 'Price__c': 0, 'Packed__c': false});
-        }
-    },
     doInit: function(component, event, helper) {
         let action = component.get("c.getItems");
 
@@ -31,6 +10,25 @@
                 console.log('Failed with state: ' + state);
             }
         })
+        $A.enqueueAction(action);
+    },
+    handleAddItem: function(component, event, helper) {
+        let newItem = event.getParam("item");
+        // helper.createItem(component, newItem)
+        let action = component.get("c.saveItem");
+        action.setParams({
+            //provide a JSON-style object with parameter name-parameter value pairs.
+            // The one trick, and it’s important, is that your parameter name must match the parameter name used in your Apex method declaration.
+            "item" : newItem
+        })
+        action.setCallback(this, function(response){
+            let state = response.getState();
+            if(state === 'SUCCESS') {
+                let items = component.get("v.items");
+                items.push(response.getReturnValue());
+                component.set("v.items", items);
+            }
+        });
         $A.enqueueAction(action);
     }
 })

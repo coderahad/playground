@@ -5,8 +5,8 @@ public with sharing class CampingListController {
     }
 
     @AuraEnabled
-    public static Camping_Item__c saveItem(Camping_Item__c citem) {
-        upsert citem;
-        return citem;
+    public static Camping_Item__c saveItem(Camping_Item__c item) {
+        upsert item;
+        return item;
     }
 }
