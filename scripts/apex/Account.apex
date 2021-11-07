@@ -467,3 +467,19 @@ ContactAndLeadSearch.searchContactsAndLeads('Smith');
 // Trigger Test: Email sent on insert contact
 Contact c = new Contact(LastName='Test Contact 1');
 insert c;
+
+// Queueable apex test. create a Apex job or AsyncApexJob object
+List<Account> accounts = [Select Id from account where billingstate = 'NY'];
+
+Id parentId = [Select Id from account where name = 'GenePoint'][0].Id;
+
+UpdateParentAccount ubdateJob = new UpdateParentAccount(accounts, parentId);
+
+ID jobId = System.enqueueJob(ubdateJob);
+
+// Schedulable apex test.
+RemindOpptyOwners reminder = new RemindOpptyOwners();
+
+// Seconds Minutes Hours Day_of_month Month Day_of_week optional_year
+String sch = '20 30 8 10 2 ?';
+String jobID = System.schedule('Remind Opp Owner', sch, reminder);
