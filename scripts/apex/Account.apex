@@ -483,3 +483,38 @@ RemindOpptyOwners reminder = new RemindOpptyOwners();
 // Seconds Minutes Hours Day_of_month Month Day_of_week optional_year
 String sch = '20 30 8 10 2 ?';
 String jobID = System.schedule('Remind Opp Owner', sch, reminder);
+
+// Send a get request http callout to an api service
+
+Http http = new Http();
+HttpRequest request = new HttpRequest();
+request.setEndPoint('https://th-apex-http-callout.herokuapp.com/animals');
+request.setMethod('GET');
+HttpResponse response = http.send(request);
+// If the request is successful, parse the JSON response
+if(response.getStatusCode() == 200) {
+ // Deserialize the JSON string into collections of primitive data types
+ Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+ // Cast the values in the 'animals' key as a list
+ List<Object> animals = (List<Object>) results.get('animals');
+ System.debug('Recieve the following animals: ');
+ for(Object animal: animals) {
+     System.debug(animal);
+ }   
+}
+
+// sending a post request http callout to an api service
+Http http = new Http();
+HttpRequest request = new HttpRequest();
+request.setEndPoint('https://th-apex-http-callout.herokuapp.com/animals');
+request.setMethod('POST');
+request.setHeader('Content-type', 'application/json;charset=UTF-8');
+// Set the body as a JSON object
+request.setBody('{"name": "mighty moose"}');
+HttpResponse response = http.send(request);
+// Parse the JSON response
+if(response.getStatusCode() != 201) {
+    System.debug('The status code returned was not expected: '+ response.getStatusCode() + ' ' + response.getStatus());
+} else {
+    System.debug(response.getBody());
+}
