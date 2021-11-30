@@ -524,3 +524,8 @@ Double x = 1.0;
 Double y = 2.0;
 Double result = calculator.doAdd(x,y);
 System.debug(result);
+
+
+ParkService.ParksImplPort park = new ParkService.ParksImplPort();
+List<String> result = park.byCountry('Germany');
+System.debug(result);
