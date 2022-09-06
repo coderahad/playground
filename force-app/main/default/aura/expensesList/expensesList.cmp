@@ -7,4 +7,4 @@
       </aura:iteration>
     </P>
   </lightning:card>
-</aura:component>	
+</aura:component>

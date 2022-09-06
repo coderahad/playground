@@ -6,4 +6,4 @@
     <lightning:button label="Today is going to be a great day" onclick="{!c.handleClick2}"/>
     <lightning:button label="Its fun travel today" onclick="{!c.handleClick3}"/>
   </div>
-</aura:component>	
+</aura:component>

@@ -26,4 +26,4 @@
             onchange="{!c.clickReimbursed}"/>
       </p>
     </lightning:card>
-</aura:component>	
+</aura:component>

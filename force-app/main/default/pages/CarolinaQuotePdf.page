@@ -1,0 +1,106 @@
+<apex:page standardController="Quote" renderAs="pdf" applyBodyTag="false">
+  <apex:pageBlock >
+      <apex:image id="headerImage" width="220" height="55" url="{!URLFOR($Resource.CarolinaImage, 'CarolinaQuote/CarolinaIAQ_Header_Image.png')}" ></apex:image>
+  </apex:pageBlock>
+  <apex:pageBlock >
+      <apex:image id="themeImage" width="100" height="100" url="{!URLFOR($Resource.CarolinaImage, 'CarolinaQuote/Carolina_theme_image.png')}" ></apex:image>
+  </apex:pageBlock>
+  <apex:pageBlock >
+      Quote&nbsp;#<apex:outputText value="{! Quote.QuoteNumber }"></apex:outputText><br/>
+      <apex:outputText value="{! Quote.Contact.Salutation}"></apex:outputText>&nbsp;
+      <apex:outputText value="{! Quote.Contact.Name}"></apex:outputText>,&nbsp;
+      <apex:outputText value="{! Quote.Contact.Title}"></apex:outputText><br/>
+      <apex:outputText value="{! Quote.Contact.MailingStreet}"></apex:outputText><br/>
+      
+      
+      
+      
+      Re:&nbsp; <apex:outputText value="{! Quote.Name }"></apex:outputText><br/><br/>
+      
+      
+      <apexPageBlock>
+          <apexPageBlockSection>
+      		<apex:outputText value="{! Quote.Account.Website }"></apex:outputText>        
+          </apexPageBlockSection>
+      </apexPageBlock>
+      Dear&nbsp;<apex:outputText value="{! Quote.Contact.LastName}"></apex:outputText>,
+      
+      <apex:outputText value="{! Quote.Account.Phone }"></apex:outputText>  
+    
+     
+      <P>
+          I have listed below the new turnkey price for installing the pre-filters and final filters in the air handling units and other HVAC equipment at the referenced facility based on the curent Master filter list. The quote is based off the filter types, quantities and changeout frequencies per the attached Master filter list.
+      </P>
+      <P>
+          The new pricing will be in effect for the May 2021 service. We have received price increases from all of the major filter manufacturers, and the cost to retain and hire quality employees has increased as well.
+     </P>
+         <div>
+              <table>    
+          		<tr>
+                    <th>
+                    SCOPE OF WORK
+              	</th>
+              	<th>
+                   QUOTE 
+              	</th>
+          		</tr>
+                <tr>
+                	<td>
+                        <ol>
+                            <li>
+                               Provide turnkey filter installation service for the air handling units and other HVAC related equipment per the current Master filter list.
+                            </li>
+                            <li>
+                               Pre-filters will be changed quarterly and final filters changed annually.
+                            </li>
+                        </ol>
+                    </td>
+                    	<div>
+                        	    $4,884.78
+                    	</div>
+                    	<div>
+                            Annual change-out per the attached Master filter list
+                    	</div>
+                    <td>
+                    </td>
+                </tr>
+             </table>
+      	</div>
+               
+      <ul id="sortable1" class="connectedSortable">
+          <li> Safety will be the first priority in all phases of work.</li>
+          <li> Installed price includes the price of the filters, labor to install the new filters and discard dirty filters, freight and delivery costs and systems to maintain records of change-outs.</li>
+          <li> Price is subject to change based upon modifications to filter type, quantity and change-out frequency.</li>
+          <li> Our service database program provides you with detailed information on change-outs per unit and can provide you with historical data.</li>
+          <li> Filters are to be changed at frequencies designated on the curent Master Filter List and as indicated in the quotation.</li>
+          <li> Date stickers are placed on all units to note dates filters are changed.</li>
+          <li> Dirty filters are to be discarded in on-site containers.</li>
+          <li> Payment terms net 30 days.</li>
+       </ul>
+      <p>
+          The filters will be ordered and maintained in our inventory prior to the scheduled change-out periods. We will coordinate all activities with the facility maintenance personnel prior to beginning work. We will only change filters on the scheduled change-outs that are dirty or as directed by the customer.
+      </p>
+	  <P>
+          I appreciate the opportunity to quote this work. Please contact me if you have any questions. I look forward to continuing our mutually beneficial relationship with the Bon Secours St. Franics hospital system on its indoor air quality initiatives.
+      </P>      
+      <div>
+          Sincerely,<br/>
+          <apex:outputText value="{! Quote.Owner.Name }"></apex:outputText>,<br/>
+          Steve Stafford, ASCS, CVI
+      </div>
+          
+      
+  </apex:pageBlock>
+   <apex:pageBlock >
+       {! Quote.Account.Website}&nbsp;&nbsp;|&nbsp;&nbsp;{! Quote.Account.Phone}<br/>
+       <apex:pageBlockSection >A division of {! Quote.Account.Parent.Name }</apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:pageBlock >
+        <apex:outputText value="{! Quote.Account.BillingStreet }"></apex:outputText>&nbsp;
+        <apex:outputText value="{! Quote.Account.BillingCity }"></apex:outputText>&nbsp;
+        <apex:outputText value="{! Quote.Account.BillingState }"></apex:outputText>&nbsp;
+        <apex:outputText value="{! Quote.Account.BillingCountry }"></apex:outputText>&nbsp;
+        <apex:outputText value="{! Quote.Account.BillingPostalCode }"></apex:outputText>&nbsp;
+    </apex:pageBlock>
+    
+</apex:page>
