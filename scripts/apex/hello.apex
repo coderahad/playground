@@ -1,10 +1,10 @@
-// Use .apex files to store anonymous Apex.
-// You can execute anonymous Apex in VS Code by selecting the
-//     apex text and running the command:
-//     SFDX: Execute Anonymous Apex with Currently Selected Text
-// You can also execute the entire file by running the command:
-//     SFDX: Execute Anonymous Apex with Editor Contents
+// This file contains all test code, experiment code, practice code from APEX DEVELOPER GUIDE
 
-string tempvar = 'hossain';
-System.debug('Hello World!');
-System.debug('My name is ' + tempvar);
+// Collections can be a key of map
+List<Integer> intList = new List<Integer>{1,2,3};
+List<String> strLIst = new List<String>{'a', 'b', 'c'};
+Account acc = new Account(Name='test');
+
+Map<List<Integer>, Account> mapIntAcc = new Map<List<Integer>, Account>();
+mapIntAcc.put(intList, acc);
+System.debug(mapIntAcc);
