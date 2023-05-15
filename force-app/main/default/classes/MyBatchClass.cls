@@ -4,7 +4,7 @@ public class MyBatchClass implements Database.Batchable<SObject> {
         // Collect the batch of records or objects to be passed to execute
     }
 
-    public void execute(Database.BatchableContext bc, List<P> records) {
+    public void execute(Database.BatchableContext bc, List<SObject> records) {
         // Process each batch of records
     }
 

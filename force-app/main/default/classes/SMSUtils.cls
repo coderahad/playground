@@ -6,6 +6,8 @@ public  class SMSUtils {
         System.debug(results);
     }
 
+//The SmsMessage class and SMS_Log__c sObject in the example are hypothetical 
+//and shown only to demonstrate the callout pattern.
     // Call from controller, etc, for immediate processing
     public static String sendSMS(Integer fromNbr, Integer ToNbr, String m) {
         // Calling 'send' will result in a callout
